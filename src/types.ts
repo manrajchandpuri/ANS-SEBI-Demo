@@ -1,0 +1,14 @@
+export type Tag={id:string;name:string};
+export type Concept={tag_id:string;display_name:string;definition?:string;parent?:string|null;level?:number;family?:string};
+export type Profile={id:string;name:string;rules:{id:string;all_of:string[]}[];exclude:string[]};
+export type Timing={expression_type:string;date:string|null;raw_text:string|null;anchor_event:string|null;conditions:string[];evidence_ids:string[];qualifier?:string|null};
+export type Evidence={evidence_id:string;pdf_page_start:number;pdf_page_end:number;locator:string;quote:string|null;supporting_text:string;url:string|null};
+export type Action={tag_id:string;mode:string;mandatory:boolean;fulfilment:string;description:string;evidence_ids:string[]};
+export type Deadline={deadline_id:string;kind:string;obligation:string;mode:string;mandatory:boolean;timing:Timing};
+export type Event={id:string;title:string;summary?:string;position?:string;kind:string;proposed:boolean;topics?:Tag[];classification?:Tag[];parties?:{name:string;scope:string;applicability:string}[];actions?:Action[];effects?:{tag_id:string;description:string;savings_or_limitations:string|null;evidence_ids:string[]}[];commencement?:Timing;deadlines?:Deadline[];transitions?:{affected_cohort:string;condition:string;rule:string;evidence_ids:string[]}[];importance?:string;evidence?:Evidence[];uncertainties?:Record<string,unknown>[]};
+export type Match={event_id:string;event_title:string;rule_id:string;reason:string;subscriptions:Tag[];tags:Tag[];evidence?:Evidence[]};
+export type Update={id:string;title:string;summary:string;published_date:string|null;document_type:Tag;importance:string;topics:Tag[];has_proposals:boolean;state:{read:boolean;saved:boolean};events:Event[];matches:Match[];source_endpoint:string;official_url:string|null;document_number:string|null;review:{quality_level:string;reviewed_at:string|null;independent_legal_review:boolean};origin:string;status:string};
+export type Feed={updates:Update[];total:number};
+export type Job={id:string;status:string;stage:string;detail:string;usage?:{estimated_inr:number}};
+export type DocumentRow={id:string;original_filename:string;title?:string;created_at:string;pdf_sha256:string;classification_status:string;latest_job:Job|null;accepted_classification_id:string|null};
+export type Readiness={frontend_ready:boolean;corpus_integrity_passed:boolean;corpus_records:number};

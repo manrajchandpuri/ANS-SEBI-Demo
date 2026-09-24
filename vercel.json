@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/updates-view",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/subscriptions",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/documents-view",
+      "destination": "/index.html"
+    }
+  ],
+  "installCommand": "npm ci"
+}

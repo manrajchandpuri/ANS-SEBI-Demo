@@ -1,0 +1,1 @@
+export function ApplicationSwitch({active:_active}:{active:'ans-sebi'|'ans-roblox'}) {return <nav className="application-switch" aria-label="Application switch"><a href="/updates-view" aria-current="page">ANS SEBI</a></nav>;}
